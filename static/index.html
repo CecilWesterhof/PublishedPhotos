@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app = "Published Photos"
+       ng-controller = "PublishedPhotosController as ctrl">
+
+  <head>
+    <meta charset = "utf-8" />
+    <title>{{ title }}</title>
+    <link rel = "stylesheet" href = "/static/css/default.css" />
+    <script src = "/static/JavaScript/angular.js"></script>
+    <script src = "/static/appPublishedPhotos.js"></script>
+  </head>
+
+  <body>
+    <h1>{{ title }}</h1>
+    <h2>2015-08</h2>
+    <ul>
+      <li ng-repeat = "link in links">
+        <a href  = "{{ link.url }}" target = "_blank">{{ link.desc }}</a>
+      </li>
+      <br />
+      <button ng-click = "openAll()">open all</button>
+     </ul>
+
+    <div class = "comment">
+      This page is using AngularJS {{ getVersion() }}
+    </div>
+  </body>
+
+</html>
