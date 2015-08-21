@@ -22,12 +22,13 @@
      </ul>
 
     <div class = "comment">
-      <ul>This page is using:
-        <li>AngularJS {{ getAngularVersion() }}</li>
-        <li>SQLite: {{ versionSQLite }}</li>
-        <li>Python: {{ versionPython }}</li>
-   </ul>
     </div>
+    <table class = "comment">
+      <tr><th colspan="2">This page is using:</th></tr>
+      <tr><td>AngularJS:</td><td>{{ versionAngular }}</td></tr>
+      <tr><td>SQLite:   </td><td>{{ versionSQLite }} </td></tr>
+      <tr><td>Python    </td><td>{{ versionPython }} </td></tr>
+    </table>
   </body>
 
 </html>

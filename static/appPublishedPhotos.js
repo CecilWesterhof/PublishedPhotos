@@ -41,7 +41,5 @@ angular.module('Published Photos', [])
                 $window.open(link.url, "_blank")
             })
         }
-        $scope.getAngularVersion = function() {
-            return angular.version.full
-        }
+        $scope.versionAngular = angular.version.full
     })
