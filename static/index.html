@@ -14,7 +14,7 @@
     <h1>{{ ctrl.title }}</h1>
     <h2>2015-08</h2>
     <ul>
-      <li ng-repeat = "link in links">
+      <li ng-repeat = "link in ctrl.links">
         <a href  = "{{ link.url }}" target = "_blank">{{ link.desc }}</a>
       </li>
       <br />
@@ -23,8 +23,8 @@
     <table class = "comment">
       <tr><th colspan = 2>This page is using:</th></tr>
       <tr><td>AngularJS:</td><td>{{ ctrl.versionAngular }}</td></tr>
-      <tr><td>SQLite:   </td><td>{{ versionSQLite }} </td></tr>
-      <tr><td>Python:   </td><td>{{ versionPython }} </td></tr>
+      <tr><td>SQLite:   </td><td>{{ ctrl.versionSQLite }} </td></tr>
+      <tr><td>Python:   </td><td>{{ ctrl.versionPython }} </td></tr>
     </table>
   </body>
 

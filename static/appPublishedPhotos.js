@@ -25,8 +25,9 @@ angular.module('Published Photos', [])
         return service;
     })
     .controller('PublishedPhotosController', function ($window, linksfetcher, versions) {
-        var self = this;
-        this.title = 'Published Photos'
+        var self = this
+
+        self.title = 'Published Photos'
         linksfetcher.getLinks().then(function(links) {
             self.links = links
         })
@@ -36,11 +37,11 @@ angular.module('Published Photos', [])
         versions.getSQLiteVersion().then(function(versionSQLite) {
             self.versionSQLite = versionSQLite
         })
-        this.openAll = function() {
+        self.openAll = function() {
             self.links.forEach(function(link) {
                 // console.log(link)
                 $window.open(link.url, "_blank")
             })
         }
-        this.versionAngular = angular.version.full
+        self.versionAngular = angular.version.full
     })
