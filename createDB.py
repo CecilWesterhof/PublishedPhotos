@@ -4,13 +4,18 @@ import sqlite3
 
 conn = sqlite3.connect('links.sqlite')
 c = conn.cursor()
-c.execute('''CREATE TABLE links (
-             ID          integer PRIMARY KEY AUTOINCREMENT,
-             year        integer,
-             month       integer,
-             description text,
-             URL         text
-             )''')
+tables = c.execute('''SELECT name
+                      FROM sqlite_master
+                      WHERE type = 'table' AND name = 'links'
+                   ''').fetchall()
+if len(tables) == 0:
+    c.execute('''CREATE TABLE links (
+                 ID          integer PRIMARY KEY AUTOINCREMENT,
+                 year        integer NOT NULL,
+                 month       integer NOT NULL,
+                 description text    NOT NULL,
+                 URL         text    NOT NULL UNIQUE
+                 )''')
 links = [
                   ('Album',            'https://plus.google.com/collection/MuwPX'),
                   ('Heron Sunbathing', 'https://plus.google.com/+CecilWesterhof/posts/bHvSzBGobEj'),
@@ -38,6 +43,15 @@ links = [
                   ('Flowers',          'https://plus.google.com/+CecilWesterhof/posts/9o1i2NgoSfV'),
                   ('Trees',            'https://plus.google.com/+CecilWesterhof/posts/ATXhirU6wGd'),
               ]
-c.executemany('INSERT INTO links (year, month, description, URL) VALUES (2015, 8, ?, ?)', links)
+for link in links:
+    urls = c.execute('SELECT URL FROM LINKS WHERE URL = ?', [link[1]]).fetchall()
+    if len(urls) == 0:
+        print('Adding {0}'.format(link))
+        c.execute('''INSERT INTO links
+                     (year, month, description, URL)
+                     VALUES
+                     (2015, 8, ?, ?)
+                  ''',
+                  link)
 conn.commit()
 conn.close()
