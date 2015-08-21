@@ -24,19 +24,20 @@ angular.module('Published Photos', [])
         }
         return service;
     })
-    .controller('PublishedPhotosController', function ($scope, $window, linksfetcher, versions) {
+    .controller('PublishedPhotosController', function ($window, linksfetcher, versions) {
+        var self = this;
         this.title = 'Published Photos'
         linksfetcher.getLinks().then(function(links) {
-            $scope.links = links
+            self.links = links
         })
         versions.getPythonVersion().then(function(versionPython) {
-            $scope.versionPython = versionPython
+            self.versionPython = versionPython
         })
         versions.getSQLiteVersion().then(function(versionSQLite) {
-            $scope.versionSQLite = versionSQLite
+            self.versionSQLite = versionSQLite
         })
         this.openAll = function() {
-            $scope.links.forEach(function(link) {
+            self.links.forEach(function(link) {
                 // console.log(link)
                 $window.open(link.url, "_blank")
             })
