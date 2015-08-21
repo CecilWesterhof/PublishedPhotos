@@ -8,7 +8,7 @@ import sys
 
 from bottle     import get, route, static_file
 from contextlib import contextmanager
-
+from platform   import python_version
 
 
 @contextmanager
@@ -38,6 +38,16 @@ def links_as_json():
     return json.dumps([
         { 'desc': desc, 'url': url }
         for desc, url in read_links()], indent = 4)
+
+@route('/versionPython')
+def versionPython():
+    bottle.response.content_type = 'text/plain'
+    return python_version()
+
+@route('/versionSQLite')
+def versionSQLite():
+    bottle.response.content_type = 'text/plain'
+    return sqlite3.sqlite_version
 
 
 os.chdir(os.path.dirname(os.path.abspath(sys.argv[0])))

@@ -22,7 +22,11 @@
      </ul>
 
     <div class = "comment">
-      This page is using AngularJS {{ getVersion() }}
+      <ul>This page is using:
+        <li>AngularJS {{ getAngularVersion() }}</li>
+        <li>SQLite: {{ versionSQLite }}</li>
+        <li>Python: {{ versionPython }}</li>
+   </ul>
     </div>
   </body>
 
