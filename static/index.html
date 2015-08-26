@@ -4,27 +4,27 @@
 
   <head>
     <meta charset = "utf-8" />
-    <title>{{ ctrl.title }}</title>
+    <title ng-bind = ctrl.title></title>
     <link rel = "stylesheet" href = "/static/css/default.css" />
     <script src = "/static/JavaScript/angular.js"></script>
     <script src = "/static/appPublishedPhotos.js"></script>
   </head>
 
   <body>
-    <h1>{{ ctrl.title }}</h1>
+    <h1 ng-bind = ctrl.title />
     <h2>2015-08</h2>
     <ul>
       <li ng-repeat = "link in ctrl.links">
-        <a href  = "{{ link.url }}" target = "_blank">{{ link.desc }}</a>
+        <a href  = "{{ link.url }}" target = "_blank" ng-bind = link.desc></a>
       </li>
       <br />
       <button ng-click = "ctrl.openAll()">open all</button>
      </ul>
     <table class = "comment">
       <tr><th colspan = 2>This page is using:</th></tr>
-      <tr><td>AngularJS:</td><td>{{ ctrl.versionAngular }}</td></tr>
-      <tr><td>SQLite:   </td><td>{{ ctrl.versionSQLite }} </td></tr>
-      <tr><td>Python:   </td><td>{{ ctrl.versionPython }} </td></tr>
+      <tr><td>AngularJS:</td><td ng-bind = ctrl.versionAngular /></tr>
+      <tr><td>SQLite:   </td><td ng-bind = ctrl.versionSQLite  /></tr>
+      <tr><td>Python:   </td><td ng-bind = ctrl.versionPython  /></tr>
     </table>
   </body>
 
