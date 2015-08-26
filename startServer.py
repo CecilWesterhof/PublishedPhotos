@@ -50,5 +50,6 @@ def versionSQLite():
     return sqlite3.sqlite_version
 
 
-os.chdir(os.path.dirname(os.path.abspath(sys.argv[0])))
-bottle.run(host = 'localhost', port = 8080)
+if __name__ == '__main__':
+    os.chdir(os.path.dirname(os.path.abspath(sys.argv[0])))
+    bottle.run(host = 'localhost', port = 8080)
